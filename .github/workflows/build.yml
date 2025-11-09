@@ -1,0 +1,25 @@
+name: Build with FPC and Allegro5
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y fpc liballegro5-dev
+
+    - name: Build example
+      run: make
+      env:
+        HOME: ${{ runner.temp }}
