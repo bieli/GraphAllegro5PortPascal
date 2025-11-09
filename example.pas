@@ -44,7 +44,9 @@ begin
   SetBkColor(Blue);
 
   // NOT SPECIFIC FOR 'Graph' LIBRARY, BUT REQUIRED TO CALLING IN THIS PORT!
+  {$if FPC_fullVersion >= 20701}
   FlipDisplay();
+  {$endif}
 
   ReadLn; // Wait for user input before closing
   CloseGraph();
