@@ -36,6 +36,8 @@ $ ./example
 #### What you can see?
 It will be new window with blue background and in mid of screen you can see text message - it means, that example.pas and Graph port library compiled on your Linux machine.
 
+![example program screen shot](example.png)
+
 ## Additional sources
 - [Allegro5 library reference manual](https://liballeg.org/a5docs/trunk/index.html)
 - [Allegro5 C library sources](https://github.com/liballeg/allegro5)
