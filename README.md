@@ -90,9 +90,9 @@ $ ./example
 ```
 
 #### What you can see?
-It will be new window with blue background and in mid of screen you can see text message - it means, that example.pas and Graph port library compiled on your Linux machine.
+It will be new OS window with animations - it means, that example.pas and Graph port library compiled on your Linux machine.
 
-![example program screen shot](example.png)
+![example program screen](example.gif)
 
 
 ## Additional sources
