@@ -29,21 +29,48 @@ procedure CloseGraph;
 function GraphResult: Integer;
 
 function GraphErrorMsg(ErrCode: Integer): String;
+
+procedure SetColor(Color: Integer);
+procedure SetFillStyle(Pattern: Word; Color: TColorType);
+procedure SetLineStyle(LineStyle, Pattern, LineWidth: Word);
+procedure SetBkColor(Color: TColorType);
+
+procedure Line(X1, Y1, X2, Y2: Integer);
+procedure Rectangle(X1, Y1, X2, Y2: Integer);
+procedure Bar(X1, Y1, X2, Y2: Integer);
+procedure Circle(X, Y, Radius: Integer);
+procedure Ellipse(X, Y, XRadius, YRadius: Integer);
+procedure FillEllipse(X, Y, XRadius, YRadius: Integer);
+procedure DrawPoly(NumPoints: Integer; Points: array of Integer);
+procedure FillPoly(NumPoints: Integer; Points: array of Integer);
+procedure OutTextXY(X, Y: Integer; Text: String);
+
+function RegisterBGIFont(const FontPath: string; Size: Integer): Pointer;
+procedure SetTextStyle(Font: Pointer; Direction, Size: Integer);
+
 procedure ClearDevice;
 
-procedure SetBkColor(Color: TColorType);
+procedure PieSlice(X, Y, StAngle, EndAngle, Radius: Integer);
+procedure Bar3D(X1, Y1, X2, Y2, Depth: Integer; TopFlag: Boolean);
+procedure Sector(X, Y, StAngle, EndAngle, XRadius, YRadius: Integer);
+
+procedure MoveTo(X, Y: Integer);
+procedure LineTo(X, Y: Integer);
+procedure MoveRel(DX, DY: Integer);
+procedure LineRel(DX, DY: Integer);
 
 function GetMaxX: Integer;
 function GetMaxY: Integer;
-
-procedure OutTextXY(X, Y: Integer; Text: String);
-function RegisterBGIFont(const FontPath: string; Size: Integer): Pointer;
-procedure SetTextStyle(Font: Pointer; Direction, Size: Integer);
 ```
 
 Additional Allegro5 specific:
 ```pascal
+
 procedure FlipDisplay;
+
+function GetScreenDimensions: Boolean;
+procedure CenterWindowOnScreen(DisplayWidth, DisplayHeight: Integer);
+procedure ResizeFont(FontPath: AnsiString; NewSize: Integer);
 ```
 
 ### How to start?
