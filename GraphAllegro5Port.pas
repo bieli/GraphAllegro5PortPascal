@@ -175,6 +175,11 @@ procedure ClearDevice;
 
 procedure SetBkColor(Color: TColorType);
 
+function GetMaxX: Integer;
+function GetMaxY: Integer;
+
+procedure FlipDisplay;
+
 implementation
 
 
@@ -315,6 +320,32 @@ begin
   SetColor(Color);
   al_clear_to_color(CurrentColor);
   //al_flip_display;
+end;
+
+function GetMaxX: Integer;
+begin
+  if Display <> nil then
+    Result := al_get_display_width(Display)
+  else
+    Result := -1;  // Return -1 if the display is not initialized
+end;
+
+function GetMaxY: Integer;
+begin
+  if Display <> nil then
+    Result := al_get_display_height(Display)
+  else
+    Result := -1;  // Return -1 if the display is not initialized
+end;
+
+
+{*
+----- OUTSIDE GRAPH LIBRARY - ALLEGRO5 SPECIFIC
+*}
+
+procedure FlipDisplay();
+begin
+  al_flip_display();
 end;
 
 end.
