@@ -19,6 +19,33 @@ Based on facts, that all my programs in Pascal were created at school time and I
                                  ▒▒▒▒▒                                                    ▒▒▒▒▒▒                                                                                           
 ```
 
+## Implemented procedures / functions from Graph library
+
+```pascal
+function Detect(): Integer;
+procedure DetectGraph(var GraphDriver: Integer; var GraphMode: Integer);
+procedure InitGraph(var GraphDriver: Integer; var GraphMode: Integer; const PathToDriver: String);
+procedure CloseGraph;
+function GraphResult: Integer;
+
+function GraphErrorMsg(ErrCode: Integer): String;
+procedure ClearDevice;
+
+procedure SetBkColor(Color: TColorType);
+
+function GetMaxX: Integer;
+function GetMaxY: Integer;
+
+procedure OutTextXY(X, Y: Integer; Text: String);
+function RegisterBGIFont(const FontPath: string; Size: Integer): Pointer;
+procedure SetTextStyle(Font: Pointer; Direction, Size: Integer);
+```
+
+Additional Allegro5 specific:
+```pascal
+procedure FlipDisplay;
+```
+
 ### How to start?
 - FPC (Free Pascal Compiler) is installed on Linux OS
 - Allegro5 developers bindings are already installed in Linux OS
@@ -37,6 +64,7 @@ $ ./example
 It will be new window with blue background and in mid of screen you can see text message - it means, that example.pas and Graph port library compiled on your Linux machine.
 
 ![example program screen shot](example.png)
+
 
 ## Additional sources
 - [Allegro5 library reference manual](https://liballeg.org/a5docs/trunk/index.html)
