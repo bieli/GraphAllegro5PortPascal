@@ -4,8 +4,11 @@ Multiplatform (DOS, M$, UNIX/*BSD, Linux, Mac OS X, iOS, and Android) port  for 
 ![CI status](https://github.com/bieli/GraphAllegro5PortPascal/actions/workflows/build.yml/badge.svg)
 
 ## Motivation
-I fond on my archive disks some older Pascal sources, from times when I learned Turbo Pascal on IBM PC machines in 90' :-)
-Based on facts, that all my programs in Pascal were created at school time and I had a huge fun with Pascal learning, I decided to write port for Graph library to run my Turbo Pascal older programs on Linux OS.
+While browsing through my archive disks, I discovered some old Pascal source files from the time I was learning Turbo Pascal on IBM PC machines back in the 1990s. :-)
+
+Since all my Pascal programs were created during my school years — and I had a lot of fun learning the language — I decided to write a port of the Graph library to run my classic Turbo Pascal programs on Linux. 
+
+I chose the [**Allegro5**](https://liballeg.org/) library because portability is essential for reproducing older Pascal programs.
 
 ```c
    █████████                                █████        █████████   ████  ████                                       ██████████ ███████████                      █████    ███████████                                       ████ 
