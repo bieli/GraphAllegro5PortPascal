@@ -34,7 +34,7 @@ $ ./example
 ```
 
 #### What you can see?
-It will be new window with blue background - it means, that example.pas and Graph port library compiled on your Linux machine.
+It will be new window with blue background and in mid of screen you can see text message - it means, that example.pas and Graph port library compiled on your Linux machine.
 
 ## Additional sources
 - [Allegro5 library reference manual](https://liballeg.org/a5docs/trunk/index.html)
