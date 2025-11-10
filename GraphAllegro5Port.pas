@@ -178,6 +178,8 @@ procedure SetBkColor(Color: TColorType);
 function GetMaxX: Integer;
 function GetMaxY: Integer;
 
+procedure OutTextXY(X, Y: Integer; Text: String);
+
 procedure FlipDisplay;
 
 implementation
@@ -336,6 +338,12 @@ begin
     Result := al_get_display_height(Display)
   else
     Result := -1;  // Return -1 if the display is not initialized
+end;
+
+procedure OutTextXY(X, Y: Integer; Text: String);
+begin
+  al_draw_text(Font, CurrentColor, X, Y, ALLEGRO_ALIGN_LEFT, PChar(Text));
+  ////al_flip_display;
 end;
 
 
