@@ -129,7 +129,7 @@ It will be new OS window with animations - it means, that example.pas and Graph 
 
 ## TODO List
 - [X] add first impl. and example program for DetectGraph and InitGraph procedures/functions
-- [ ] - [ ] add impl. for typical graphics primitives like Line, Bar, Ract and others
-- [ ] create and test CI for FPC example compiling
-- [ ] add all graphics primitives demos in example program
-- [ ] create instruction how to port any older program written in Turbo/Borland Pascal and Graph library
+- [X] add impl. for typical graphics primitives like Line, Bar, Ract and others
+- [X] create and test CI for FPC example compiling
+- [x] add all graphics primitives demos in example program
+- [x] create instruction how to port any older program written in Turbo/Borland Pascal and Graph library
