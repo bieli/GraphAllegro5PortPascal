@@ -179,6 +179,8 @@ function GetMaxX: Integer;
 function GetMaxY: Integer;
 
 procedure OutTextXY(X, Y: Integer; Text: String);
+function RegisterBGIFont(const FontPath: string; Size: Integer): Pointer;
+procedure SetTextStyle(Font: Pointer; Direction, Size: Integer);
 
 procedure FlipDisplay;
 
@@ -346,6 +348,22 @@ begin
   ////al_flip_display;
 end;
 
+function RegisterBGIFont(const FontPath: string; Size: Integer): Pointer;
+begin
+  Result := al_load_ttf_font(PChar(FontPath), Size, 0);
+  if Result = nil then
+    raise Exception.Create('Failed to load font: ' + FontPath);
+  Font := Result;
+end;
+
+procedure SetTextStyle(Font: Pointer; Direction, Size: Integer);
+begin
+  // Direction: 0 = HorizDir, 1 = VertDir (like BGI)
+  // Size is ignored here because it's set during RegisterBGIFont
+  if Direction = 1 then
+    al_set_target_bitmap(al_get_backbuffer(al_get_current_display));  // Needed for rotation
+  // Allegro doesn't use SetTextStyle directly — you rotate text manually if needed
+end;
 
 {*
 ----- OUTSIDE GRAPH LIBRARY - ALLEGRO5 SPECIFIC
