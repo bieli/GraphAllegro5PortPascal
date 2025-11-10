@@ -44,7 +44,8 @@ It will be new window with blue background and in mid of screen you can see text
 - [Allegro5 Pascal wrapper](https://github.com/niuniomartinez/allegro-pas)
 
 ## TODO List
-- [ ] add impl. for typical graphics primitives like Line, Bar, Ract and others
+- [X] add first impl. and example program for DetectGraph and InitGraph procedures/functions
+- [ ] - [ ] add impl. for typical graphics primitives like Line, Bar, Ract and others
 - [ ] create and test CI for FPC example compiling
 - [ ] add all graphics primitives demos in example program
 - [ ] create instruction how to port any older program written in Turbo/Borland Pascal and Graph library
