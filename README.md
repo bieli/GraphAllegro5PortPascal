@@ -42,3 +42,9 @@ It will be new window with blue background and in mid of screen you can see text
 - [Allegro5 library reference manual](https://liballeg.org/a5docs/trunk/index.html)
 - [Allegro5 C library sources](https://github.com/liballeg/allegro5)
 - [Allegro5 Pascal wrapper](https://github.com/niuniomartinez/allegro-pas)
+
+## TODO List
+- [ ] add impl. for typical graphics primitives like Line, Bar, Ract and others
+- [ ] create and test CI for FPC example compiling
+- [ ] add all graphics primitives demos in example program
+- [ ] create instruction how to port any older program written in Turbo/Borland Pascal and Graph library
