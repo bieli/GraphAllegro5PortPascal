@@ -89,6 +89,30 @@ $ make
 $ ./example
 ```
 
+#### Typical program flow
+```pascal
+Program TypicalProgramFlowExample
+
+// ...
+
+begin
+  Init;
+
+  repeat
+    ClearDevice;
+    DrawStaticPrimitives;
+    DrawAnimatedOverlay;
+    UpdateState;
+    {$if FPC_fullVersion >= 20701}
+    FlipDisplay;
+    {$endif}
+    Delay(FrameDelay);
+  until KeyPressed;
+
+  CloseGraph;
+end.
+```
+
 #### What you can see?
 It will be new OS window with animations - it means, that example.pas and Graph port library compiled on your Linux machine.
 
