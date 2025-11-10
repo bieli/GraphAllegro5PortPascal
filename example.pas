@@ -17,6 +17,7 @@ Graph
 
 var
   GraphicsDriver, GraphicsMode, ErrCode: Integer;
+  MidX, MidY: Integer;
 
 begin
   {$if FPC_fullVersion >= 20701}
@@ -42,6 +43,12 @@ begin
   ClearDevice();
 
   SetBkColor(Blue);
+
+
+  MidX := GetMaxX() div 2;
+  MidY := GetMaxY() div 2;
+  SetColor(White);
+  OutTextXY(MidX, MidY, 'Hello, from GraphAllegro5Port example...');
 
   // NOT SPECIFIC FOR 'Graph' LIBRARY, BUT REQUIRED TO CALLING IN THIS PORT!
   {$if FPC_fullVersion >= 20701}
