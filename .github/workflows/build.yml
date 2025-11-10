@@ -6,10 +6,6 @@ on:
   pull_request:
     branches: [ main ]
 
-concurrency:
-  group: build-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,12 +14,17 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Install dependencies
+    - name: Install system dependencies
       run: |
         sudo apt update
         sudo apt install -y fpc liballegro5-dev
 
+    - name: Clone allegro-pas bindings
+      run: |
+        mkdir -p $HOME/fpcupdeluxe/ccr
+        git clone https://github.com/niuniomartinez/allegro-pas.git $HOME/fpcupdeluxe/ccr/allegro-pas
+
     - name: Build example
-      run: make
-      env:
-        HOME: ${{ runner.temp }}
+      run: |
+        fpc -Fu"$HOME/fpcupdeluxe/ccr/allegro-pas/src/lib/" example.pas \
+            -k-lallegro -k-lallegro_primitives -k-lallegro_font -k-lallegro_ttf
