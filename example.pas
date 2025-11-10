@@ -15,9 +15,13 @@ Graph
 {$endif}
 ;
 
+const
+  FontPath = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf';
+
 var
   GraphicsDriver, GraphicsMode, ErrCode: Integer;
-  MidX, MidY: Integer;
+  MidX, MidY, HorizDir: Integer;
+  FontHandle: Pointer;
 
 begin
   {$if FPC_fullVersion >= 20701}
@@ -45,9 +49,19 @@ begin
   SetBkColor(Blue);
 
 
-  MidX := GetMaxX() div 2;
+  MidX := GetMaxX() div 6;
   MidY := GetMaxY() div 2;
   SetColor(White);
+  HorizDir := 1;
+  
+  {$if FPC_fullVersion >= 20701}
+    FontHandle := RegisterBGIFont(FontPath, 22);
+    SetTextStyle(FontHandle, HorizDir, 22);
+  {$else}
+    FontHandle := RegisterBGIFont('GOTH.CHR');
+    SetTextStyle(FontHandle, HorizDir, 22);
+  {$endif}
+  
   OutTextXY(MidX, MidY, 'Hello, from GraphAllegro5Port example...');
 
   // NOT SPECIFIC FOR 'Graph' LIBRARY, BUT REQUIRED TO CALLING IN THIS PORT!
