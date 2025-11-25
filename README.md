@@ -40,6 +40,7 @@ procedure SetFillStyle(Pattern: Word; Color: TColorType);
 procedure SetLineStyle(LineStyle, Pattern, LineWidth: Word);
 procedure SetBkColor(Color: TColorType);
 
+procedure Arc(x, y: Integer; stangle, endangle, radius: Word);
 procedure Line(X1, Y1, X2, Y2: Integer);
 procedure Rectangle(X1, Y1, X2, Y2: Integer);
 procedure Bar(X1, Y1, X2, Y2: Integer);
@@ -103,12 +104,15 @@ begin
 
   repeat
     ClearDevice;
-    DrawStaticPrimitives;
-    DrawAnimatedOverlay;
-    UpdateState;
+
+    { DrawStaticPrimitives; }
+    { DrawAnimatedOverlay; }
+    { UpdateState; }
+
     {$if FPC_fullVersion >= 20701}
     FlipDisplay;
     {$endif}
+
     Delay(FrameDelay);
   until KeyPressed;
 
@@ -133,3 +137,4 @@ It will be new OS window with animations - it means, that example.pas and Graph 
 - [X] create and test CI for FPC example compiling
 - [x] add all graphics primitives demos in example program
 - [x] create instruction how to port any older program written in Turbo/Borland Pascal and Graph library
+- [ ] add additional functions like Bar3D, FloodFill and others from (Graph API spec.)[https://www.freepascal.org/docs-html/rtl/graph/index-5.html] 

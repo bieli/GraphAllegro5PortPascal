@@ -152,6 +152,11 @@ const
   sc_infoUpper = 0;
   sc_warningUpper = 1;
 
+  Default = 0;
+  DefaultFont = 0;
+  HorizDir = 0;
+  VertDir = 1;
+
 
 type
   TMessageResult = (mrNone, mrYes, mrCancel);
@@ -175,6 +180,7 @@ procedure SetFillStyle(Pattern: Word; Color: TColorType);
 procedure SetLineStyle(LineStyle, Pattern, LineWidth: Word);
 procedure SetBkColor(Color: TColorType);
 
+procedure Arc(x, y: Integer; stangle, endangle, radius: Word);
 procedure Line(X1, Y1, X2, Y2: Integer);
 procedure Rectangle(X1, Y1, X2, Y2: Integer);
 procedure Bar(X1, Y1, X2, Y2: Integer);
@@ -381,6 +387,33 @@ begin
   SetColor(Color);
   al_clear_to_color(CurrentColor);
   //al_flip_display;
+end;
+
+procedure Arc(x, y: Integer; stangle, endangle, radius: Word);
+const
+  DEG_TO_RAD = Pi / 180;
+  SEGMENT_STEP = 4;  { degrees between points — smaller = smoother }
+var
+  angle, radStart, radEnd: Double;
+  px1, py1, px2, py2: Single;
+begin
+  radStart := stangle * DEG_TO_RAD;
+  radEnd := endangle * DEG_TO_RAD;
+
+  if radEnd < radStart then
+    radEnd := radEnd + 2 * Pi;
+
+  angle := radStart;
+  while angle < radEnd do
+  begin
+    px1 := x + radius * cos(angle);
+    py1 := y - radius * sin(angle);  { TP uses upward Y }
+    px2 := x + radius * cos(angle + SEGMENT_STEP * DEG_TO_RAD);
+    py2 := y - radius * sin(angle + SEGMENT_STEP * DEG_TO_RAD);
+
+    al_draw_line(px1, py1, px2, py2, CurrentColor, CurrentLineWidth);
+    angle := angle + SEGMENT_STEP * DEG_TO_RAD;
+  end;
 end;
 
 procedure Line(X1, Y1, X2, Y2: Integer);
