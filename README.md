@@ -26,6 +26,8 @@ I chose the [**Allegro5**](https://liballeg.org/) library because portability is
 
 ## Implemented procedures / functions from Graph library
 
+#### unit GraphAllegro5Port - Graph unit port from Turbo Pascal
+
 ```pascal
 function Detect(): Integer;
 procedure DetectGraph(var GraphDriver: Integer; var GraphMode: Integer);
@@ -69,7 +71,8 @@ function GetMaxX: Integer;
 function GetMaxY: Integer;
 ```
 
-Additional Allegro5 specific:
+##### Additional Allegro5 specific:
+
 ```pascal
 
 procedure FlipDisplay;
@@ -79,11 +82,21 @@ procedure CenterWindowOnScreen(DisplayWidth, DisplayHeight: Integer);
 procedure ResizeFont(FontPath: AnsiString; NewSize: Integer);
 ```
 
+#### unit MouseAllegro5Port - Mouse unit port from Turbo Pascal
+
+```pascal
+
+procedure InitMouse;
+function PollMouseEvent(out me: TMouseEvent): Boolean;
+procedure CloseMouse;
+```
+
+
 ### How to start?
 - FPC (Free Pascal Compiler) is installed on Linux OS
 - Allegro5 developers bindings are already installed in Linux OS
 - this repository is cloned to local Linux machine
-- call `make` and run `example` program
+- call `make` and run `example` and `example_mouse` programs
 
 #### Example commands from Linux Ubuntu/Debian
 ```bash
@@ -91,13 +104,25 @@ $ sudo apt install fpc
 $ sudo apt install liballegro5-dev
 $ make
 $ ./example
+$ ./example_mouse
 ```
 
 #### Typical program flow
 ```pascal
-Program TypicalProgramFlowExample
+Program TypicalProgramFlowExample;
 
-// ...
+
+{ you can see condition on compilator level: if compilator it's FPC, then Graph port will be used }
+uses
+  Crt,
+  {$if FPC_fullVersion >= 20701}
+  GraphAllegro5Port
+  {$else}
+  Graph
+  {$endif}
+;
+
+{ ... }
 
 begin
   Init;
@@ -137,4 +162,5 @@ It will be new OS window with animations - it means, that example.pas and Graph 
 - [X] create and test CI for FPC example compiling
 - [x] add all graphics primitives demos in example program
 - [x] create instruction how to port any older program written in Turbo/Borland Pascal and Graph library
+- [X] add Mouse unit port, when you would like to write apps with graphical interfaces and mouse interactions on screen
 - [ ] add additional functions like Bar3D, FloodFill and others from [Graph API spec.](https://www.freepascal.org/docs-html/rtl/graph/index-5.html)

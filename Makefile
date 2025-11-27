@@ -1,6 +1,8 @@
 FPC = fpc
 SRC = example.pas
 OUT = example
+SRC1 = example_mouse.pas
+OUT1 = example_mouse
 UNITS = GraphAllegro5Port.pas
 
 # Allegro5 libraries passed to linker via -k
@@ -13,6 +15,7 @@ all: $(OUT)
 
 $(OUT): $(SRC) $(UNITS)
 	   $(FPC) -Mobjfpc -Scgi -O2 -g -gl $(UNIT_PATHS) $(SRC) -o$(OUT) $(ALLEGRO_LIBS)
+	   $(FPC) -Mobjfpc -Scgi -O2 -g -gl $(UNIT_PATHS) $(SRC1) -o$(OUT1) $(ALLEGRO_LIBS)
 
 clean:
 	rm -f $(OUT) *.o *.ppu
