@@ -1,5 +1,5 @@
 # GraphAllegro5PortPascal
-Multiplatform (DOS, M$, UNIX/*BSD, Linux, Mac OS X, iOS, and Android) port  for "Graph" Turbo Pascal graphic library based on "Allegro5" graphic library.
+Multiplatform (M$, UNIX/*BSD, Linux, Mac OSX, iOS/iPhone, and Android) port for "Graph" Turbo Pascal graphic library based on "Allegro5" graphic library.
 
 ![CI status](https://github.com/bieli/GraphAllegro5PortPascal/actions/workflows/build.yml/badge.svg)
 
