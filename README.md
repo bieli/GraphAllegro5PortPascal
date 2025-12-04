@@ -8,7 +8,7 @@ While browsing through my archive disks, I discovered some old Pascal source fil
 
 Since all my Pascal programs were created during my school years — and I had a lot of fun learning the language — I decided to write a port of the Graph library to run my classic Turbo Pascal programs on Linux. 
 
-I chose the [**Allegro5**](https://liballeg.org/) library because portability is essential for reproducing older Pascal programs.
+I chose the [**Allegro5**](https://liballeg.org/) library ([github repo](https://github.com/liballeg/allegro5)) because portability is essential for reproducing older Pascal programs.
 
 ```c
    █████████                                █████        █████████   ████  ████                                       ██████████ ███████████                      █████    ███████████                                       ████ 
